@@ -1,0 +1,421 @@
+/*
+ * Custom styles for the Zheen Heart Department website
+ *
+ * This stylesheet defines a small design system built on top of Bootstrap.  It
+ * introduces a set of CSS variables for the brand colours specified in the
+ * project brief and then uses them to customise navigation, buttons and
+ * section backgrounds.  Playfair Display is used for headings, with Lato for
+ * running text, giving the site an elegant yet highly readable look.  A
+ * semi‑transparent overlay on the hero banner improves legibility when white
+ * text sits on top of the photographic background.
+ */
+
+:root {
+  --primary-accent: #1c5d85; /* deep crimson for buttons and highlights */
+  --dark-text: #2E2E2E;      /* charcoal grey for body copy */
+  --light-bg: #FAFAFA;       /* ivory white for page backgrounds */
+  --success: #28A745;        /* emerald green for calls‑to‑action */
+}
+
+
+
+
+
+
+@font-face {
+  font-family: 'nrtreg';
+  src:
+    url("../fonts/NRT-Reg.woff") format("woff"),
+    url("../fonts/NRT-Reg.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* avoids invisible text */
+}
+
+/*  bold/italic variants */
+@font-face {
+  font-family: 'nrtbd';
+  src:
+    url("../fonts/NRT-Bd.woff") format("woff"),
+    url("../fonts/NRT-Bd.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+
+
+
+body {
+  font-family: 'nrtreg';
+  color: var(--dark-text);
+  background-color: var(--light-bg);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'nrtbd';
+  color: var(--primary-accent);
+}
+
+/* Navigation bar adjustments */
+.navbar-brand {
+  font-family: 'nrtbd';
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: var(--dark-text);
+  font-weight: 500;
+  margin-left: 1rem;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link.active {
+  color: var(--primary-accent);
+}
+
+/* Hero section */
+#hero {
+  min-height: 85vh;
+  background-image: url('../images/hero.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  color: #ffffff;
+  text-align: center;
+}
+
+/* Override heading and paragraph colours in hero so they remain legible over
+   the dark overlay.  Without this rule the global heading colour (deep
+   crimson) would override the white text defined on the parent. */
+#hero h1,
+#hero p {
+  color: #ffffff;
+}
+
+/* Force white colour on hero headings to override global heading colour */
+#hero h1 {
+  color: #ffffff !important;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.55);
+  z-index: 1;
+}
+
+#hero .hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #ffffff; /* ensure headings and text appear white over dark overlay */
+}
+
+#hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-cta {
+  background-color: var(--success);
+  border: none;
+  color: #fff;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cta:hover {
+  background-color: #218838;
+  color: #fff;
+}
+
+/* Intro section */
+#intro p {
+  font-size: 1.1rem;
+}
+
+/* Quick info section */
+#quick .icon-wrapper {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background-color: var(--primary-accent);
+  color: #fff;
+  font-size: 2rem;
+}
+
+#quick h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.3rem;
+  color: var(--primary-accent);
+}
+
+#quick p {
+  margin-bottom: 0;
+}
+
+/* Why Choose Us */
+#why {
+  background-color: var(--light-bg);
+}
+
+#why .feature {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  transition: box-shadow 0.3s ease;
+}
+
+#why .feature:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+#why .feature i {
+  color: #1c5d85;
+}
+
+.testimonial {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.testimonial-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.blockquote {
+  margin: 0;
+}
+
+.blockquote-footer {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #e85524;
+  font-family: 'nrtbd';
+  opacity: 1;
+}
+
+/* Footer */
+footer {
+  background-color: #1c5d85;
+}
+
+footer p, footer a {
+  color: #f1f1f1;
+  font-size: 0.9rem;
+}
+
+/* Doctors page styles */
+.doctor-card {
+  background-color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+}
+
+.doctor-card img {
+  width: 100%;
+  height: auto;
+}
+
+.doctor-card .card-body {
+  padding: 1rem;
+}
+
+.doctor-card h5 {
+  font-family: 'nrtbd';
+  color: var(--primary-accent);
+  font-size: 1.25rem;
+}
+
+.doctor-card p {
+  font-size: 0.95rem;
+}
+
+.doctor-card .btn {
+  background-color: var(--success);
+  border: none;
+}
+
+.doctor-card .btn:hover {
+  background-color: #218838;
+}
+
+/* Contact page styles */
+#contact-details h5 {
+  color: var(--primary-accent);
+  margin-top: 1rem;
+}
+
+form label {
+  font-weight: 500;
+}
+
+.form-control {
+  border-radius: 0.25rem;
+  border-color: #dee2e6;
+}
+
+.form-control:focus {
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 0 0.2rem rgba(139, 30, 63, 0.25);
+}
+
+.btn-submit {
+  background-color: var(--primary-accent);
+  border: none;
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+}
+
+.btn-submit:hover {
+  background-color: #711832;
+}
+#langPicker .btn.active { border-color:#000; font-weight:600; }
+html[dir="rtl"] body { direction: rtl; } /* ensure full RTL flip */
+html[dir="rtl"] .navbar .navbar-nav .nav-link { text-align: right; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ZHD Brochure Specific Styles */
+.zhd-brochure-section {
+    max-width: 1100px;
+    margin: 50px auto;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #2d3748;
+    line-height: 1.7;
+}
+
+.zhd-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 60px 0;
+    border-bottom: 2px solid #00A3C4; /* The signature ZHD Teal/Blue */
+}
+
+.zhd-entry:last-child {
+    border-bottom: none;
+}
+
+.zhd-details {
+    flex: 1.2;
+}
+
+.zhd-heading {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 24px;
+    padding-left: 20px;
+    position: relative;
+    text-transform: capitalize;
+}
+
+/* The vertical accent block from your brochure */
+.zhd-heading::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 4px;
+    bottom: 4px;
+    width: 10px;
+    background-color: #004a99; /* Deep Hospital Blue */
+}
+
+.zhd-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+
+.zhd-list li {
+    padding-left: 25px;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.zhd-list li::before {
+    content: "•";
+    color: #00A3C4;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -5px;
+}
+
+.zhd-image-container {
+    flex: 1;
+}
+
+.zhd-image-container img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 850px) {
+    .zhd-entry {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+    .zhd-heading {
+        font-size: 1.6rem;
+    }
+}

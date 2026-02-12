@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zheen Heart Department</title>
+  <link rel="icon" href="LOGO-LIGHT-01.ico" type="image/x-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap & AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Elegant Custom CSS -->
+  <style>
+    :root {
+      --primary-accent: #8B1E3F;
+      --dark-text: #2E2E2E;
+      --light-bg: #FAFAFA;
+      --success: #28A745;
+      --accent-gradient: linear-gradient(135deg, #8B1E3F, #5c1328);
+    }
+    body {
+      font-family: "Inter","DM Sans", Arial, sans-serif;
+      color: var(--dark-text);
+      background: var(--light-bg);
+      line-height: 1.7;
+    }
+    h1,h2,h3,h4,h5,h6 {
+      font-family: "Playfair Display", serif;
+      color: var(--primary-accent);
+      line-height: 1.2;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(10px);
+      transition: background 0.3s ease;
+    }
+    .navbar-light .nav-link {
+      position: relative;
+      margin-left: 1rem;
+      font-weight: 500;
+      color: var(--dark-text);
+      transition: color 0.3s ease;
+    }
+    .navbar-light .nav-link::after {
+      content: "";
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--primary-accent);
+      transition: width 0.3s ease;
+    }
+    .navbar-light .nav-link:hover,
+    .navbar-light .nav-link.active {
+      color: var(--primary-accent);
+    }
+    .navbar-light .nav-link:hover::after,
+    .navbar-light .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    #hero {
+      min-height: 100vh;
+      background: url('assets/images/hero.jpg') center/cover no-repeat;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: #fff;
+    }
+    #hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.55);
+      background-image: var(--accent-gradient);
+      opacity: .85; z-index: 1;
+    }
+    #hero .hero-content {
+      position: relative; z-index: 2;
+      max-width: 800px;
+      padding: 2rem;
+    }
+    #hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      animation: fadeUp 1.2s ease-out;
+    }
+    #hero p {
+      font-size: 1.3rem;
+      margin: 1.5rem 0 2rem;
+      animation: fadeUp 1.8s ease-out;
+    }
+    .btn-cta {
+      background: var(--success);
+      border: none; color: #fff;
+      padding: .85rem 2.5rem;
+      font-size: 1.05rem;
+      border-radius: 50px;
+      transition: transform .3s ease, background .3s ease;
+      box-shadow: 0 0 0 0 rgba(40,167,69,.5);
+      animation: pulse 2s infinite;
+    }
+    .btn-cta:hover { background:#218838; transform: translateY(-3px); }
+
+    /* Sections */
+    #intro p { font-size: 1.15rem; max-width: 900px; margin: 0 auto; }
+    #quick .icon-wrapper {
+      width: 70px; height: 70px;
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 1rem;
+      border-radius:50%;background:var(--primary-accent);color:#fff;font-size:2rem;
+      transition: transform .3s ease;
+    }
+    #quick .icon-wrapper:hover { transform:scale(1.1); }
+    #why .feature {
+      background:#fff; border-radius:1rem;
+      padding:2rem 1.5rem;
+      box-shadow:0 6px 20px rgba(0,0,0,.05);
+      transition:.3s;
+    }
+    #why .feature:hover { transform:translateY(-8px); box-shadow:0 12px 30px rgba(0,0,0,.12); }
+#hero {
+  background: url('../images/hero.jpg') center/cover no-repeat;
+}
+
+    /* Testimonials */
+    .testimonial {
+      background:#fff; border-radius:1rem; padding:1.5rem;
+      box-shadow:0 8px 25px rgba(0,0,0,.05);
+      display:flex;align-items:flex-start;
+    }
+    .testimonial img {
+      width:60px;height:60px;border-radius:50%;margin-right:1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark-text);
+      color:#f1f1f1;
+      padding:2rem 0; position:relative;
+    }
+    footer::before {
+      content:""; position:absolute; top:0; left:0;
+      width:100%; height:3px;
+      background:var(--accent-gradient);
+    }
+    footer a { color:#ddd; text-decoration:none; }
+    footer a:hover { text-decoration:underline; }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from{opacity:0; transform:translateY(20px);}
+      to{opacity:1; transform:translateY(0);}
+    }
+    @keyframes pulse {
+      0%{box-shadow:0 0 0 0 rgba(40,167,69,.4);}
+      70%{box-shadow:0 0 0 20px rgba(40,167,69,0);}
+      100%{box-shadow:0 0 0 0 rgba(40,167,69,0);}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top shadow-sm">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">Zheen Heart Department</a>
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#doctors">Our Doctors</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="hero">
+    <div class="hero-content">
+      <h1>Together, For A Strong Heart<br>Excellence in Heart Surgery</h1>
+      <p>Zheen Heart Department – Erbil, Iraq</p>
+      <a href="https://wa.me/9647509801515" class="btn btn-cta">Book Appointment</a>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section id="intro" class="py-5">
+    <div class="container" data-aos="fade-up">
+      <h2 class="text-center mb-4">Welcome to Zheen Heart Department</h2>
+      <p class="text-center">Our commitment is to deliver world-class cardiac care. We blend technology with compassionate care to ensure the best outcomes for our patients.</p>
+    </div>
+  </section>
+
+  <!-- Quick Info -->
+  <section id="quick" class="py-5 bg-light">
+    <div class="container">
+      <div class="row text-center" data-aos="fade-up">
+        <div class="col-lg-4 mb-4">
+          <div class="icon-wrapper"><i class="fas fa-phone"></i></div>
+          <h3>Emergency? Call Now</h3>
+          <p>+964&nbsp;750&nbsp;980&nbsp;1515</p>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <div class="icon-wrapper"><i class="fas fa-heartbeat"></i></div>
+          <h3>Our Services</h3>
+          <p>ECMO, Valve Repair, CABG and more</p>
+        </div>
+        <div class="col-lg-4">
+          <div class="icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
+          <h3>Our Location</h3>
+          <p>Zheen International Hospital – Erbil, Iraq</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="why" class="py-5">
+    <div class="container" data-aos="fade-up">
+      <h2 class="text-center mb-5">Why Choose Us</h2>
+      <div class="row">
+        <div class="col-md-6 col-lg-3 mb-4"><div class="feature text-center h-100"><i class="fas fa-lungs fa-2x mb-3"></i><h5>First ECMO in Iraq</h5><p>We introduced ECMO to Iraq, offering life-saving support for patients with severe cardiac or respiratory failure.</p></div></div>
+        <div class="col-md-6 col-lg-3 mb-4"><div class="feature text-center h-100"><i class="fas fa-procedures fa-2x mb-3"></i><h5>24/7 Cardiac ICU</h5><p>Our intensive care unit operates around the clock, ensuring immediate response and continuous monitoring.</p></div></div>
+        <div class="col-md-6 col-lg-3 mb-4"><div class="feature text-center h-100"><i class="fas fa-user-md fa-2x mb-3"></i><h5>Fellowship-Trained Consultants</h5><p>Our consultants bring advanced training from top institutions worldwide.</p></div></div>
+        <div class="col-md-6 col-lg-3 mb-4"><div class="feature text-center h-100"><i class="fas fa-heart fa-2x mb-3"></i><h5>Team-Based Care</h5><p>We practice evidence-based, multidisciplinary case management for best results.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="testimonial" data-aos="fade-up">
+            <img src="assets/images/testimonial1.png" alt="Patient">
+            <blockquote><p>“The care I received at Zheen Heart Department exceeded my expectations.”</p><footer class="blockquote-footer">Patient Feedback</footer></blockquote>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="testimonial" data-aos="fade-up" data-aos-delay="150">
+            <img src="assets/images/testimonial2.png" alt="Patient">
+            <blockquote><p>“From diagnosis to recovery, the staff were supportive and professional.”</p><footer class="blockquote-footer">Patient Feedback</footer></blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container text-center">
+      <p>© 2025 Zheen Heart Department. All rights reserved.</p>
+      <p><a href="mailto:info@zheenheart.com">zheenheart@gmail.com</a> | <a href="tel:+9647509801515">+964&nbsp;750&nbsp;980&nbsp;1515</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ once:true });</script>
+</body>
+</html>
