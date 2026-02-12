@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Balen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section {
+            background: white;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-icon {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-section {
+            text-align: center;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 60px 40px;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-section .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-section .current-position {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            backdrop-filter: blur(10px);
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 15px;
+        }
+        
+        .section h3 {
+            color: #667eea;
+            font-size: 1.4em;
+            margin: 20px 0 10px 0;
+        }
+        
+        .education-item, .experience-item, .certification-item {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            transition: background 0.3s ease;
+        }
+        
+        .education-item:hover, .experience-item:hover, .certification-item:hover {
+            background: #e3f2fd;
+        }
+        
+        .education-item h4, .experience-item h4, .certification-item h4 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .institution, .workplace {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .year, .duration {
+            color: #666;
+            font-style: italic;
+            float: right;
+            background: #e0e0e0;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+        
+        .description {
+            margin-top: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .specialties-grid, .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .specialty-card, .skill-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .specialty-card:hover, .skill-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .specialty-card h4, .skill-card h4 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .contact-info {
+            background: #e8f5e8;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #4caf50;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1em;
+        }
+        
+        .contact-icon {
+            background: #4caf50;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .philosophy-quote {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.2em;
+            font-style: italic;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+        }
+        
+        .interest-tag {
+            display: inline-block;
+            background: #9c27b0;
+            color: white;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 25px;
+                margin: 20px 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+            
+            .section h2 {
+                font-size: 1.8em;
+            }
+            
+            .contact-grid, .specialties-grid, .skills-grid, .awards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portfolio-container">
+        
+        <!-- Hero Section -->
+        <div class="section hero-section">
+            <h1>Dr. Balen</h1>
+            <div class="subtitle">Senior Consultant Interventional Cardiologist<br>General Internal Medicine Specialist (UK)</div>
+            <div class="current-position">
+                <strong>Currently Working at:</strong><br>
+                Zheen International Hospital<br>
+                Zheen Heart Department<br>
+                Erbil, Kurdistan Region, Iraq
+            </div>
+        </div>
+
+        <!-- About Me -->
+        <div class="section">
+            <h2>About Me</h2>
+            <div class="philosophy-quote">
+                "Expert in complex coronary interventions, structural heart disease, and advanced vascular procedures."
+            </div>
+            <p style="font-size: 1.1em; margin-top: 20px;">
+                Senior Consultant Interventional Cardiologist and General Internal Medicine Specialist with extensive training and board certifications from the United Kingdom. Currently leading clinical excellence at the Zheen Heart Department.
+            </p>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <h2>Education & Board Certifications</h2>
+            
+            <div class="education-item">
+                <h4>CCT in Interventional Cardiology and GIM</h4>
+                <div class="institution">United Kingdom</div>
+                <div class="description">Certificate of Completion of Training</div>
+            </div>
+            
+            <div class="education-item">
+                <h4>MRCP (London)</h4>
+                <div class="institution">Royal College of Physicians of London</div>
+            </div>
+
+            <div class="education-item">
+                <h4>MRCP (UK)</h4>
+                <div class="institution">Royal College of Physicians of the United Kingdom</div>
+            </div>
+
+            <div class="education-item">
+                <h4>MSc in Cardiology</h4>
+                <div class="institution">Master of Science</div>
+            </div>
+
+             <div class="education-item">
+                <h4>Board Certified</h4>
+                <div class="institution">UK</div>
+                <div class="description">Heart Diseases, Catheterization, Stenting, and Balloon Angioplasty</div>
+            </div>
+
+             <div class="education-item">
+                <h4>Board Certified</h4>
+                <div class="institution">UK</div>
+                <div class="description">Internal Medicine</div>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+            <h2>Professional Experience</h2>
+            
+            <div class="experience-item">
+                <h4>Senior Consultant / Interventional Cardiologist</h4>
+                <div class="workplace">Zheen Heart Department – Zheen International Hospital</div>
+                <div class="description">
+                    Leading the interventional suite for complex PCI (Percutaneous Coronary Intervention).<br>
+                    Managing acute cardiac emergencies including myocardial infarction and stroke interventions.<br>
+                    Overseeing the integration of CT imaging with cardiac catheterization for precision diagnostics.
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical Specialties -->
+        <div class="section">
+            <h2>Clinical Expertise & Services</h2>
+            <div class="specialties-grid">
+                <div class="specialty-card">
+                    <h4>Interventional Cardiology</h4>
+                    <p>Catheterization, Stenting, and Balloon Angioplasty</p>
+                </div>
+                <div class="specialty-card">
+                    <h4>Cardiac Rhythm Management</h4>
+                    <p>Permanent Pacemaker (PPM) implantation</p>
+                </div>
+                <div class="specialty-card">
+                    <h4>Neuro-Vascular Intervention</h4>
+                    <p>Management of Brain Strokes via catheterization</p>
+                </div>
+                <div class="specialty-card">
+                    <h4>Renal Denervation</h4>
+                    <p>Treatment for resistant Hypertension</p>
+                </div>
+            </div>
+
+            <div class="key-conditions">
+                <h3>Core Competencies</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px;">
+                    <span class="interest-tag">Coronary Angiography</span>
+                    <span class="interest-tag">Complex Angioplasty</span>
+                    <span class="interest-tag">Valvular Heart Disease</span>
+                    <span class="interest-tag">Internal Medicine Diagnosis</span>
+                    <span class="interest-tag">Hypertension Management</span>
+                    <span class="interest-tag">Stroke Intervention</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="section">
+            <h2>Contact Information</h2>
+            <div class="contact-info">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">🏥</div>
+                        <div>
+                            <strong>Location</strong><br>
+                            Zheen International Hospital, Erbil
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="section" style="text-align: center; background: linear-gradient(135deg, #2c3e50, #34495e); color: white;">
+            <h2 style="color: white; border-bottom: none;">Thank You</h2>
+            <p style="font-size: 1.2em; margin-top: 30px;">
+                Dedicated to advancing healthcare through clinical excellence.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Ali Hamdamin Shikhani</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .portfolio-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section {
+            background: white;
+            margin: 30px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 40px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        
+        .section-icon {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero-section {
+            text-align: center;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 60px 40px;
+        }
+        
+        .hero-section h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero-section .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-section .current-position {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.2em;
+            backdrop-filter: blur(10px);
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 15px;
+        }
+        
+        .section h3 {
+            color: #667eea;
+            font-size: 1.4em;
+            margin: 20px 0 10px 0;
+        }
+        
+        .education-item, .experience-item, .certification-item {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            transition: background 0.3s ease;
+        }
+        
+        .education-item:hover, .experience-item:hover, .certification-item:hover {
+            background: #e3f2fd;
+        }
+        
+        .education-item h4, .experience-item h4, .certification-item h4 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .institution, .workplace {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .year, .duration {
+            color: #666;
+            font-style: italic;
+            float: right;
+            background: #e0e0e0;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+        
+        .description {
+            margin-top: 15px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .specialties-grid, .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .specialty-card, .skill-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .specialty-card:hover, .skill-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .specialty-card h4, .skill-card h4 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .contact-info {
+            background: #e8f5e8;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #4caf50;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1em;
+        }
+        
+        .contact-icon {
+            background: #4caf50;
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .philosophy-quote {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+            font-size: 1.2em;
+            font-style: italic;
+            box-shadow: 0 5px 15px rgba(255,107,107,0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                padding: 25px;
+                margin: 20px 0;
+            }
+            
+            .hero-section h1 {
+                font-size: 2.5em;
+            }
+            
+            .section h2 {
+                font-size: 1.8em;
+            }
+            
+            .contact-grid, .specialties-grid, .skills-grid, .awards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="portfolio-container">
+        
+        <!-- Hero Section -->
+        <div class="section hero-section">
+            <h1>Dr. Ali Hamdamin Shikhani</h1>
+            <div class="subtitle">Consultant Interventional Cardiologist & Electrophysiologist</div>
+            <div class="current-position">
+                <strong>Currently Working at:</strong><br>
+                Zheen International Hospital<br>
+                Zheen Heart Department<br>
+                Erbil, Kurdistan Region, Iraq
+            </div>
+        </div>
+
+        <!-- About Me -->
+        <div class="section">
+            <h2>About Me</h2>
+            <div class="philosophy-quote">
+                "Triple-board certified with extensive expertise in heart diseases, cardiac arrhythmias, and advanced catheterization procedures."
+            </div>
+            <p style="font-size: 1.1em; margin-top: 20px;">
+                A highly qualified Consultant in Cardiology with sub-specialization in Interventional Cardiology and Electrophysiology. Currently serving at the Zheen Heart Department.
+            </p>
+        </div>
+
+        <!-- Education -->
+        <div class="section">
+            <h2>Education & Board Certifications</h2>
+            
+            <div class="education-item">
+                <h4>F.I.B.M.S Cardiology and Electrophysiology</h4>
+                <div class="institution">Iraqi Board for Medical Specializations</div>
+                <div class="description">Fellow in Cardiology and Electrophysiology</div>
+            </div>
+            
+            <div class="education-item">
+                <h4>C.A.B.M.S Cardiology</h4>
+                <div class="institution">Council of Arab Board of Medical Specializations</div>
+                <div class="description">Fellow in Cardiology</div>
+            </div>
+
+            <div class="education-item">
+                <h4>F.I.B.M.S Medicine</h4>
+                <div class="institution">Iraqi Board for Medical Specializations</div>
+                <div class="description">Fellow in Internal Medicine</div>
+            </div>
+
+            <div class="education-item">
+                <h4>MBChB</h4>
+                <div class="institution">Bachelor of Medicine, Bachelor of Surgery</div>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <div class="section">
+            <h2>Current Appointment</h2>
+            
+            <div class="experience-item">
+                <h4>Consultant Cardiologist</h4>
+                <div class="workplace">Zheen International Hospital – Zheen Heart Department</div>
+                <div class="description">
+                    Lead specialist in the Heart Department (1st Floor).<br>
+                    Conducting advanced interventional procedures and electrophysiology studies.
+                </div>
+            </div>
+        </div>
+
+        <!-- Medical Specialties -->
+        <div class="section">
+            <h2>Clinical Specializations</h2>
+            <div class="specialties-grid">
+                <div class="specialty-card">
+                    <h4>Interventional Cardiology</h4>
+                    <p>Expert in diagnostic and therapeutic cardiac catheterization.</p>
+                </div>
+                <div class="specialty-card">
+                    <h4>Cardiac Electrophysiology</h4>
+                    <p>Specialist in the electrical activities of the heart and managing rhythm disorders.</p>
+                </div>
+                <div class="specialty-card">
+                    <h4>Internal Medicine</h4>
+                    <p>Comprehensive management of complex systemic and cardiac-related medical conditions.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Memberships -->
+        <div class="section">
+            <h2>Professional Memberships</h2>
+            <div class="education-item">
+                <h4>Member of the Iraqi Cardiothoracic Society</h4>
+                <div class="institution">Active Participant</div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="section">
+            <h2>Contact Information</h2>
+            <div class="contact-info">
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">🏥</div>
+                        <div>
+                            <strong>Address</strong><br>
+                            Erbil – Beginning of Koya Road – Zheen International Hospital<br>
+                            Heart Department, 1st Floor
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="section" style="text-align: center; background: linear-gradient(135deg, #2c3e50, #34495e); color: white;">
+            <h2 style="color: white; border-bottom: none;">Thank You</h2>
+            <p style="font-size: 1.2em; margin-top: 30px;">
+                Dedicated to advancing healthcare through clinical excellence.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
