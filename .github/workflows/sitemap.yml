@@ -1,0 +1,28 @@
+name: Generate sitemap
+
+on:
+  push:
+    branches: [ main ] # Runs every time you push to the main branch
+
+jobs:
+  sitemap_job:
+    runs-on: ubuntu-latest
+    name: Generate a sitemap
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Important for "lastmod" dates
+
+      - name: Generate the sitemap
+        uses: cicirello/generate-sitemap@v1
+        with:
+          base-url-path: https://www.zheenheart.com/ # REPLACE WITH YOUR URL
+
+      - name: Commit and push the sitemap
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sitemap.xml
+          git commit -m "Automated sitemap update" || exit 0
+          git push
